@@ -58,4 +58,5 @@ export interface RegisteredComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Component: React.ComponentType<any>
   schema?: ComponentSchema
+  source: string
 }
