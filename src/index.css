@@ -14,35 +14,51 @@
   }
 
   body {
-    @apply bg-surface-950 text-white font-sans;
+    @apply bg-surface-950 text-surface-50 font-sans;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-surface-900;
+    background: #0d0d0d;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-surface-200/20 rounded-full;
+    background: #333333;
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-accent-500/60;
+    background: #e85002;
   }
 }
 
 @layer utilities {
+  /* Glassmorphism card */
   .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
+  /* Orange glow */
   .glow-accent {
-    box-shadow: 0 0 24px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 24px rgba(232, 80, 2, 0.35);
+  }
+
+  /* Branding gradient (from palette) */
+  .gradient-brand {
+    background: linear-gradient(135deg, #000000 0%, #c10801 40%, #f16001 75%, #d9c3ab 100%);
+  }
+
+  .gradient-brand-text {
+    background: linear-gradient(90deg, #f16001, #e85002);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

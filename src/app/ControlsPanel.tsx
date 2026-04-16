@@ -111,7 +111,7 @@ function RangeControl({
             animate={{ width: `${pct}%` }}
             transition={{ duration: 0.1 }}
             className="absolute left-0 top-0 h-full rounded-full"
-            style={{ background: 'linear-gradient(90deg, #8b5cf6, #6366f1)' }}
+            style={{ background: 'linear-gradient(90deg, #e85002, #c10801)' }}
           />
         </div>
         {/* Native range (invisible, on top) */}
@@ -126,7 +126,7 @@ function RangeControl({
         />
         {/* Thumb */}
         <div
-          className="absolute w-4 h-4 rounded-full bg-white shadow-lg pointer-events-none border-2 border-accent-500"
+          className="absolute w-4 h-4 rounded-full bg-white shadow-lg pointer-events-none border-2 border-accent-400"
           style={{ left: `calc(${pct}% - 8px)` }}
         />
       </div>

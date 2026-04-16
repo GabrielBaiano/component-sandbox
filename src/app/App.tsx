@@ -47,7 +47,7 @@ export default function App() {
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 40% at 20% 50%, rgba(139,92,246,0.06) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 20% 50%, rgba(232,80,2,0.07) 0%, transparent 70%)',
         }}
       />
 

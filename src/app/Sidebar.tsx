@@ -32,7 +32,7 @@ export default function Sidebar({
         <div className="flex items-center gap-2.5 mb-5">
           <div
             className="w-7 h-7 rounded-lg flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #8b5cf6, #6366f1)' }}
+            style={{ background: 'linear-gradient(135deg, #e85002, #c10801)' }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
               <rect x="3" y="3" width="7" height="7" rx="1" />

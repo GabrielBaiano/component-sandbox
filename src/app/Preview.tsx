@@ -70,7 +70,7 @@ export default function Preview({
               className="rounded-2xl overflow-hidden flex items-center justify-center"
               style={{
                 background: bg,
-                border: '1px solid rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.04)',
                 minHeight: '480px',
               }}
             >
@@ -85,7 +85,7 @@ export default function Preview({
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center opacity-20"
-                style={{ background: 'linear-gradient(135deg, #8b5cf6, #6366f1)' }}
+                style={{ background: 'linear-gradient(135deg, #e85002, #c10801)' }}
               >
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
                   <rect x="3" y="3" width="7" height="7" rx="1" />

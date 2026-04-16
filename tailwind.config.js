@@ -8,23 +8,25 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['"Google Sans Flex"', '"Google Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
         surface: {
-          50:  '#f8f8fc',
-          100: '#f0f0f8',
-          200: '#e4e4f0',
-          800: '#1a1a2e',
-          900: '#12121f',
-          950: '#0a0a14',
+          50:  '#f9f9f9',  // White
+          100: '#e0e0e0',
+          200: '#a7a7a7',  // Light Gray
+          400: '#646464',  // Gray
+          800: '#333333',  // Dark Gray
+          900: '#1a1a1a',
+          950: '#0d0d0d',
         },
         accent: {
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-        }
+          300: '#f16001',
+          400: '#e85002',  // Branding Orange
+          500: '#c10801',
+          600: '#9a0601',
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-out',

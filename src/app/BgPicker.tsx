@@ -148,7 +148,7 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
                           className="w-8 h-8 rounded-lg border-2 transition-all hover:scale-110"
                           style={{
                             background: p.value,
-                            borderColor: value === p.value ? '#8b5cf6' : 'rgba(255,255,255,0.08)',
+                            borderColor: value === p.value ? '#e85002' : 'rgba(255,255,255,0.08)',
                           }}
                         />
                       ))}
@@ -167,7 +167,7 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
                           className="h-10 rounded-xl border-2 transition-all hover:scale-105 text-[9px] text-white/40 font-mono"
                           style={{
                             background: g.value,
-                            borderColor: value === g.value ? '#8b5cf6' : 'rgba(255,255,255,0.08)',
+                            borderColor: value === g.value ? '#e85002' : 'rgba(255,255,255,0.08)',
                           }}
                         >
                           {value === g.value && '✓'}
@@ -226,7 +226,7 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
                           className="w-7 h-7 rounded-lg border-2 hover:scale-110 transition-transform"
                           style={{
                             background: c,
-                            borderColor: value === c ? '#a78bfa' : 'rgba(255,255,255,0.1)',
+                            borderColor: value === c ? '#e85002' : 'rgba(255,255,255,0.1)',
                           }}
                         />
                       ))}
