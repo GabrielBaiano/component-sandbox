@@ -3,11 +3,12 @@ import { motion } from 'framer-motion'
 export default function CardGlass() {
   return (
     <div className="flex flex-col items-center gap-8 p-12">
-      <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase">
+      <h2 className="text-[10px] font-mono text-white/30 tracking-widest uppercase">
         Card Glass
       </h2>
 
       <div className="flex flex-wrap gap-6 items-start justify-center">
+
         {/* Card 1: Profile */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -17,14 +18,14 @@ export default function CardGlass() {
           className="glass rounded-2xl p-6 w-64 flex flex-col items-center gap-4"
         >
           <div
-            className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold"
-            style={{ background: 'linear-gradient(135deg, #8b5cf6, #6366f1)' }}
+            className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white"
+            style={{ background: 'linear-gradient(135deg, #e85002, #c10801)' }}
           >
             G
           </div>
           <div className="text-center">
             <p className="font-semibold text-white">Gabriel Baiano</p>
-            <p className="text-sm text-white/50 font-medium">Frontend Developer</p>
+            <p className="text-sm text-white/50 font-medium mt-0.5">Frontend Developer</p>
           </div>
           <div className="w-full h-px bg-white/10" />
           <div className="flex gap-4 text-center">
@@ -53,7 +54,8 @@ export default function CardGlass() {
         >
           <div className="flex items-center justify-between">
             <span className="text-sm text-white/50 font-medium">Revenue</span>
-            <span className="text-xs px-2 py-1 rounded-full text-emerald-400 bg-emerald-400/10 font-mono">
+            <span className="text-xs px-2 py-1 rounded-full font-mono"
+              style={{ color: '#f59e0b', background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.2)' }}>
               +12.5%
             </span>
           </div>
@@ -64,7 +66,7 @@ export default function CardGlass() {
               animate={{ width: '72%' }}
               transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
               className="h-1.5 rounded-full"
-              style={{ background: 'linear-gradient(90deg, #8b5cf6, #6366f1)' }}
+              style={{ background: 'linear-gradient(90deg, #e85002, #c10801)' }}
             />
           </div>
           <p className="text-xs text-white/30">72% of monthly goal</p>
@@ -77,11 +79,11 @@ export default function CardGlass() {
           transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
           className="glass rounded-2xl p-5 w-64 flex flex-col gap-3"
         >
-          <p className="text-xs text-white/40 font-mono uppercase tracking-wider">Notifications</p>
+          <p className="text-[10px] text-white/40 font-mono uppercase tracking-wider">Notifications</p>
           {[
-            { icon: '⚡', title: 'New deployment', time: '2m ago', color: '#a78bfa' },
-            { icon: '💬', title: 'New comment', time: '15m ago', color: '#34d399' },
-            { icon: '🔔', title: 'Pull request merged', time: '1h ago', color: '#60a5fa' },
+            { icon: '⚡', title: 'New deployment', time: '2m ago', color: '#e85002' },
+            { icon: '💬', title: 'New comment',    time: '15m ago', color: '#34d399' },
+            { icon: '🔔', title: 'PR merged',      time: '1h ago',  color: '#f59e0b' },
           ].map((item, i) => (
             <motion.div
               key={item.title}

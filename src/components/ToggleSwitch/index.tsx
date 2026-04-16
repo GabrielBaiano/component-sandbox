@@ -66,7 +66,7 @@ export default function ToggleSwitch({ size = 'md', disabled = false }: ToggleSw
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-[3px] flex items-center justify-center text-accent-500"
+                className="absolute top-[3px] flex items-center justify-center text-white/80"
                 style={{
                   left: s.onX + 3,
                   width: s.thumbSize,

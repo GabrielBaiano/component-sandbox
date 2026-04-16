@@ -5,35 +5,35 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const PRESETS = [
   // Dark
-  { label: 'Near black',   value: '#0a0a14' },
-  { label: 'Pitch black',  value: '#000000' },
-  { label: 'Dark navy',    value: '#0d1b36' },
-  { label: 'Charcoal',     value: '#1c1c1e' },
-  { label: 'Dark slate',   value: '#0f172a' },
-  { label: 'Deep purple',  value: '#1a0033' },
+  { label: 'Near black',    value: '#0d0d0d' },
+  { label: 'Pitch black',   value: '#000000' },
+  { label: 'Dark brown',    value: '#1a0a00' },
+  { label: 'Charcoal',      value: '#1c1c1c' },
+  { label: 'Dark gray',     value: '#333333' },
+  { label: 'Warm charcoal', value: '#1a1208' },
   // Light
-  { label: 'White',        value: '#ffffff' },
-  { label: 'Off-white',    value: '#f8f8f8' },
-  { label: 'Light gray',   value: '#f0f0f0' },
-  { label: 'Warm white',   value: '#faf8f5' },
-  { label: 'Cool white',   value: '#f0f4ff' },
-  { label: 'Cream',        value: '#fffdf5' },
-  // Colored
-  { label: 'Navy blue',    value: '#0a1628' },
-  { label: 'Forest',       value: '#0a2010' },
-  { label: 'Burgundy',     value: '#1a0808' },
-  { label: 'Slate blue',   value: '#1e293b' },
-  { label: 'Purple dark',  value: '#1a0040' },
-  { label: 'Teal dark',    value: '#001a1a' },
+  { label: 'White',         value: '#ffffff' },
+  { label: 'Off-white',     value: '#f9f9f9' },
+  { label: 'Light gray',    value: '#f0f0f0' },
+  { label: 'Warm white',    value: '#faf8f5' },
+  { label: 'Cream',         value: '#fffdf0' },
+  { label: 'Stone',         value: '#f5f0eb' },
+  // Mid
+  { label: 'Gray',          value: '#646464' },
+  { label: 'Dark gray 2',   value: '#2a2a2a' },
+  { label: 'Smoke',         value: '#1a1a1a' },
+  { label: 'Zinc',          value: '#27272a' },
+  { label: 'Warm dark',     value: '#18120a' },
+  { label: 'Amber dark',    value: '#1a1200' },
 ]
 
 const GRADIENT_PRESETS = [
-  { label: 'Radial purple', value: 'radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.15), #0a0a14)' },
-  { label: 'Radial red',    value: 'radial-gradient(ellipse at 50% 0%, rgba(220,38,38,0.12), #0d1b36)' },
-  { label: 'Dark mesh',     value: 'radial-gradient(at 40% 20%, #1a0033 0%, #0a0a14 50%, #001233 100%)' },
-  { label: 'Aurora',        value: 'linear-gradient(135deg, #0d1b36 0%, #1a0033 50%, #0a1628 100%)' },
-  { label: 'Midnight',      value: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)' },
-  { label: 'Warm dark',     value: 'linear-gradient(135deg, #1c0a00 0%, #1a1000 100%)' },
+  { label: 'Radial orange',  value: 'radial-gradient(ellipse at 50% 0%, rgba(232,80,2,0.18), #0d0d0d)' },
+  { label: 'Radial amber',   value: 'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.15), #0d0d0d)' },
+  { label: 'Brand mesh',     value: 'radial-gradient(at 30% 20%, #1a0800 0%, #000000 50%, #1a0d00 100%)' },
+  { label: 'Warm gradient',  value: 'linear-gradient(135deg, #1a0800 0%, #2a1000 50%, #1a0a00 100%)' },
+  { label: 'Midnight',       value: 'linear-gradient(180deg, #111111 0%, #000000 100%)' },
+  { label: 'Ember',          value: 'linear-gradient(135deg, #1c0a00 0%, #0d0d0d 60%, #1a0800 100%)' },
 ]
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -117,7 +117,7 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
             transition={{ duration: 0.15 }}
             onMouseEnter={openPicker}
             className="absolute right-0 top-full mt-2 z-50 w-72 rounded-2xl border border-white/[0.08] shadow-2xl overflow-hidden"
-            style={{ background: '#12121f' }}
+            style={{ background: '#111111' }}
           >
             {/* Tabs */}
             <div className="flex border-b border-white/[0.06]">
@@ -219,7 +219,7 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
                   <div>
                     <p className="text-[10px] text-white/25 uppercase tracking-wider mb-2 font-mono">Quick picks</p>
                     <div className="grid grid-cols-8 gap-1">
-                      {['#000000', '#ffffff', '#dc2626', '#2563eb', '#16a34a', '#d97706', '#8b5cf6', '#06b6d4'].map(c => (
+                      {['#000000', '#ffffff', '#e85002', '#c10801', '#f59e0b', '#d97706', '#333333', '#646464'].map(c => (
                         <button
                           key={c}
                           onClick={() => { setHex(c); setHexInput(c); onChange(c) }}

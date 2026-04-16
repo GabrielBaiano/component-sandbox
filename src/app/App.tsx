@@ -3,7 +3,7 @@ import { components } from '../components'
 import Sidebar from './Sidebar'
 import Preview from './Preview'
 
-const DEFAULT_BG = '#0a0a14'
+const DEFAULT_BG = '#0d0d0d'
 
 export default function App() {
   const [selectedId, setSelectedId] = useState<string | null>(components[0]?.meta.id ?? null)

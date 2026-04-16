@@ -22,9 +22,9 @@ export default {
           950: '#0d0d0d',
         },
         accent: {
-          300: '#f16001',
-          400: '#e85002',  // Branding Orange
-          500: '#c10801',
+          300: '#f59e0b',  // Amber / warm yellow
+          400: '#e85002',  // Branding Orange (primary)
+          500: '#c10801',  // Deep red-orange
           600: '#9a0601',
         },
       },
