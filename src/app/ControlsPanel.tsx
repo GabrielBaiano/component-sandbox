@@ -37,7 +37,8 @@ function SelectControl({
               {active && (
                 <motion.div
                   layoutId={`select-active-${control.id}`}
-                  className="absolute inset-0 bg-accent-500/20"
+                  className="absolute inset-0"
+                  style={{ background: 'rgba(232,80,2,0.12)' }}
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
@@ -70,7 +71,7 @@ function ToggleControl({
         style={{ width: 40, height: 22 }}
       >
         <motion.div
-          animate={{ background: value ? '#8b5cf6' : 'rgba(255,255,255,0.1)' }}
+          animate={{ background: value ? '#e85002' : 'rgba(255,255,255,0.08)' }}
           className="absolute inset-0 rounded-full"
         />
         <motion.div
