@@ -15,7 +15,47 @@ export interface ComponentMeta {
   createdAt?: string
 }
 
+// ── Schema / Controls ──────────────────────────────────────────────────────────
+// Each component can export a schema.ts defining sandbox controls.
+// These controls are rendered in the ControlsPanel below the preview.
+
+export interface SelectControl {
+  type: 'select'
+  id: string
+  label: string
+  options: { label: string; value: string | number }[]
+  default: string | number
+}
+
+export interface ToggleControl {
+  type: 'toggle'
+  id: string
+  label: string
+  default: boolean
+}
+
+export interface RangeControl {
+  type: 'range'
+  id: string
+  label: string
+  min: number
+  max: number
+  step: number
+  default: number
+  unit?: string
+}
+
+export type ComponentControl = SelectControl | ToggleControl | RangeControl
+
+export interface ComponentSchema {
+  controls: ComponentControl[]
+}
+
+// ── Registry ───────────────────────────────────────────────────────────────────
+
 export interface RegisteredComponent {
   meta: ComponentMeta
-  Component: React.ComponentType
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Component: React.ComponentType<any>
+  schema?: ComponentSchema
 }

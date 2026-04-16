@@ -75,6 +75,7 @@ Then register it in `src/components/index.ts` — that's it.
 |---|---|---|
 | [Button Gradient](./src/components/ButtonGradient/) | button, gradient, animation | React, Tailwind, Framer Motion |
 | [Card Glass](./src/components/CardGlass/) | card, glass, glassmorphism | React, Tailwind, Framer Motion |
+| [Barber Loyalty Widget](./src/components/BarberLoyaltyWidget/) | widget, loyalty, barber, ios, progress | React, Tailwind, Framer Motion, TypeScript |
 
 <!-- Add a new row here every time you create a component -->
 

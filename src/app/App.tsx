@@ -1,12 +1,15 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { components } from '../components'
 import Sidebar from './Sidebar'
 import Preview from './Preview'
 
+const DEFAULT_BG = '#0a0a14'
+
 export default function App() {
   const [selectedId, setSelectedId] = useState<string | null>(components[0]?.meta.id ?? null)
   const [query, setQuery] = useState('')
-  const [darkBg, setDarkBg] = useState(true)
+  const [bg, setBg] = useState(DEFAULT_BG)
+  const [controlValues, setControlValues] = useState<Record<string, unknown>>({})
 
   const filtered = useMemo(() => {
     if (!query.trim()) return components
@@ -21,13 +24,30 @@ export default function App() {
 
   const selected = components.find(r => r.meta.id === selectedId) ?? null
 
+  // Reset controls to schema defaults when active component changes
+  useEffect(() => {
+    if (!selected?.schema) {
+      setControlValues({})
+      return
+    }
+    const defaults = Object.fromEntries(
+      selected.schema.controls.map(c => [c.id, c.default])
+    )
+    setControlValues(defaults)
+  }, [selected?.meta.id])
+
+  function handleControlChange(id: string, value: unknown) {
+    setControlValues(prev => ({ ...prev, [id]: value }))
+  }
+
   return (
     <div className="flex h-screen overflow-hidden bg-surface-950">
-      {/* Ambient background glow */}
+      {/* Ambient glow */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
         style={{
-          background: 'radial-gradient(ellipse 60% 40% at 20% 50%, rgba(139,92,246,0.06) 0%, transparent 70%)',
+          background:
+            'radial-gradient(ellipse 60% 40% at 20% 50%, rgba(139,92,246,0.06) 0%, transparent 70%)',
         }}
       />
 
@@ -41,8 +61,10 @@ export default function App() {
         />
         <Preview
           registration={selected}
-          darkBg={darkBg}
-          onToggleBg={() => setDarkBg(p => !p)}
+          bg={bg}
+          onBgChange={setBg}
+          controlValues={controlValues}
+          onControlChange={handleControlChange}
         />
       </div>
     </div>
