@@ -54,7 +54,7 @@ Opens at **http://localhost:5173**
 
 ## 📦 Adding a Component
 
-Read the full guide in **[COMPONENTS.md](./COMPONENTS.md)**.
+Read the full guide in **[COMPONENTS.md](./src/COMPONENTS.md)**.
 
 Quick summary:
 
@@ -76,6 +76,7 @@ Then register it in `src/components/index.ts` — that's it.
 | [Button Gradient](./src/components/ButtonGradient/) | button, gradient, animation | React, Tailwind, Framer Motion |
 | [Card Glass](./src/components/CardGlass/) | card, glass, glassmorphism | React, Tailwind, Framer Motion |
 | [Barber Loyalty Widget](./src/components/BarberLoyaltyWidget/) | widget, loyalty, barber, ios, progress | React, Tailwind, Framer Motion, TypeScript |
+| [Toggle Switch](./src/components/ToggleSwitch/) | input, toggle, switch, form | React, Framer Motion |
 
 <!-- Add a new row here every time you create a component -->
 

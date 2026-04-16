@@ -19,8 +19,13 @@ import BarberLoyaltyWidget from './BarberLoyaltyWidget'
 import { meta as BarberLoyaltyWidgetMeta } from './BarberLoyaltyWidget/meta'
 import { schema as BarberLoyaltyWidgetSchema } from './BarberLoyaltyWidget/schema'
 
+import ToggleSwitch from './ToggleSwitch'
+import { meta as ToggleSwitchMeta } from './ToggleSwitch/meta'
+import { schema as ToggleSwitchSchema } from './ToggleSwitch/schema'
+
 export const components: RegisteredComponent[] = [
   { meta: ButtonGradientMeta, Component: ButtonGradient },
   { meta: CardGlassMeta, Component: CardGlass },
   { meta: BarberLoyaltyWidgetMeta, Component: BarberLoyaltyWidget, schema: BarberLoyaltyWidgetSchema },
+  { meta: ToggleSwitchMeta, Component: ToggleSwitch, schema: ToggleSwitchSchema },
 ]
