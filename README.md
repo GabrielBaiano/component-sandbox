@@ -1,110 +1,127 @@
-# 🧱 Component Sandbox
+<p align="center">
+  <br />
+  <b style="font-size: 32px;">Gabri UI</b>
+  <br />
+  <br />
+  <b>Premium React UI components for state-of-the-art web applications.</b>
+  <br />
+  <span>A professional collection of copy-paste components built with React, Tailwind CSS and Framer Motion.</span>
+</p>
 
-A personal UI component playground — a place to build, store, and preview reusable frontend components.
+<p align="center">
+  <a href="https://github.com/GabrielBaiano/component-sandbox/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="license">
+  </a>
+  <a href="https://www.npmjs.com/package/@gabri/ui">
+    <img src="https://img.shields.io/badge/npm-v1.0.0-orange.svg?style=flat-square" alt="npm version">
+  </a>
+  <a href="https://github.com/GabrielBaiano/component-sandbox/actions">
+    <img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square" alt="build status">
+  </a>
+  <a href="https://reactjs.org/">
+    <img src="https://img.shields.io/badge/react-19.x-61dafb.svg?style=flat-square" alt="react version">
+  </a>
+</p>
 
-<!--
-  💡 SCREENSHOT: Replace the line below with your screenshot once you have a good one.
+<br />
 
-  ![Preview](./docs/preview.png)
--->
-
-> **Preview coming soon** — take a screenshot of the running app and place it at `docs/preview.png`
-
----
+Gabri UI is a high-quality component library designed to provide beautiful, interactive, and production-ready components. Inspired by the best design practices, it focuses on performance, accessibility, and a premium aesthetic (glassmorphism, advanced animations, and fluid layouts).
 
 ## ✨ Features
 
-- 🔍 **Real-time search** by name, tags, description and technology
-- 🌓 **Background toggle** between dark and light preview
-- 🏷️ **Tech badges** color-coded by technology type
-- ✨ **Animations** with Framer Motion throughout the interface
-- 📁 **Folder-based organization** — each component is isolated and self-contained
+- 🎨 **State-of-the-Art Design**: Deep focus on HSL-tailored colors, glassmorphism, and premium aesthetics.
+- ⚡ **Performance First**: Minimal dependencies, optimized Framer Motion animations.
+- 🔍 **Interactive Documentation**: Built-in sandbox with real-time prop controls and live preview.
+- 🛠️ **Developer Experience**: Fully typed with TypeScript, easy copy-paste structure.
+- 🌓 **Dark Mode Optimized**: Designed primarily for modern dark-themed interfaces.
 
----
+## 🚀 Documentation
 
-## 🛠 Stack
+The library comes with a built-in documentation site and interactive playground.
 
-| Tech | Version | Purpose |
-|---|---|---|
-| [Vite](https://vitejs.dev/) | ^6 | Bundler / Dev server |
-| [React](https://react.dev/) | ^19 | UI framework |
-| [TypeScript](https://www.typescriptlang.org/) | ^5 | Type safety |
-| [Tailwind CSS](https://tailwindcss.com/) | ^3 | Styling |
-| [Framer Motion](https://www.framer.com/motion/) | ^12 | Animations |
+**[Explore the Documentation →](http://localhost:5173)** (Local server)
 
----
+## 📦 Installation
 
-## 🚀 Running Locally
+> **Note:** The library is currently in development. NPM installation will be available soon.
 
 ```bash
-# Clone the repo
+npm install @gabri/ui
+```
+
+### For Development (Sandbox)
+
+To explore the components and contribute:
+
+```bash
+# Clone the repository
 git clone https://github.com/GabrielBaiano/component-sandbox.git
-cd component-sandbox
 
 # Install dependencies
 npm install
 
-# Start the dev server
+# Start the interactive sandbox
 npm run dev
 ```
 
-Opens at **http://localhost:5173**
+## 🛠 Usage
 
----
+Integrating Gabri UI components into your project is straightforward:
 
-## 📦 Adding a Component
+```tsx
+import { ToggleSwitch } from '@gabri/ui';
 
-Read the full guide in **[COMPONENTS.md](./src/COMPONENTS.md)**.
-
-Quick summary:
-
+function App() {
+  return (
+    <ToggleSwitch 
+      size="md" 
+      disabled={false} 
+      onChange={(val) => console.log(val)} 
+    />
+  );
+}
 ```
-src/components/
-└── MyComponent/
-    ├── index.tsx   ← the component
-    └── meta.ts     ← metadata (name, tags, tech)
-```
-
-Then register it in `src/components/index.ts` — that's it.
-
----
 
 ## 🗂 Components
 
-| Component | Tags | Tech |
-|---|---|---|
-| [Button Gradient](./src/components/ButtonGradient/) | button, gradient, animation | React, Tailwind, Framer Motion |
-| [Card Glass](./src/components/CardGlass/) | card, glass, glassmorphism | React, Tailwind, Framer Motion |
-| [Barber Loyalty Widget](./src/components/BarberLoyaltyWidget/) | widget, loyalty, barber, ios, progress | React, Tailwind, Framer Motion, TypeScript |
-| [Toggle Switch](./src/components/ToggleSwitch/) | input, toggle, switch, form | React, Framer Motion |
+| Component | Description | Tech | Tags |
+| :--- | :--- | :--- | :--- |
+| **[Button Gradient](./src/components/ButtonGradient/)** | Animated gradient buttons with glow effects. | React, Framer Motion | `button`, `cta` |
+| **[Card Glass](./src/components/CardGlass/)** | Premium glassmorphism cards for various layouts. | React, Tailwind | `card`, `glass` |
+| **[Toggle Switch](./src/components/ToggleSwitch/)** | Modern animated switch with multiple sizes. | React, Framer Motion | `input`, `form` |
 
-<!-- Add a new row here every time you create a component -->
+## 🏗 Project Structure
 
----
-
-## 📁 Project Structure
-
-```
-component-sandbox/
+```bash
+gabri-ui/
 ├── src/
-│   ├── components/          ← All components
-│   │   ├── index.ts         ← Central registry
-│   │   ├── ButtonGradient/
-│   │   └── CardGlass/
-│   ├── app/
-│   │   ├── App.tsx          ← Main layout
-│   │   ├── Sidebar.tsx      ← Search and component list
-│   │   └── Preview.tsx      ← Preview area
-│   ├── types.ts             ← Types (ComponentMeta, etc.)
-│   └── index.css            ← Global styles + Tailwind
-├── COMPONENTS.md            ← Guide for adding components
-├── tailwind.config.js
-├── vite.config.ts
+│   ├── app/           # Documentation Site source code
+│   ├── components/    # Component Library (The core)
+│   │   ├── Component/
+│   │   │   ├── index.tsx  # Component logic
+│   │   │   ├── meta.ts   # Docs metadata & Props info
+│   │   │   └── schema.ts # Sandbox controls
+│   └── types.ts       # Central type definitions
+├── README.md
 └── package.json
 ```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Licensed under the **MIT License**. See [LICENSE](./LICENSE) for more information.
 
 ---
 
 <p align="center">
-  Made by <a href="https://github.com/GabrielBaiano">Gabriel Baiano</a>
+  Built with ❤️ by <a href="https://github.com/GabrielBaiano">Gabriel Baiano</a>
 </p>
