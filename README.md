@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **Aviso:** Este projeto foi desenvolvido com o auxílio de Inteligência Artificial. Ele é um protótipo temporário e as funcionalidades e configurações ainda não estão operando de maneira adequada.
+
 <p align="center">
   <br />
   <b style="font-size: 32px;">Gabri UI</b>
@@ -27,21 +30,21 @@
 
 Gabri UI is a high-quality component library designed to provide beautiful, interactive, and production-ready components. Inspired by the best design practices, it focuses on performance, accessibility, and a premium aesthetic (glassmorphism, advanced animations, and fluid layouts).
 
-## ✨ Features
+## Features
 
-- 🎨 **State-of-the-Art Design**: Deep focus on HSL-tailored colors, glassmorphism, and premium aesthetics.
-- ⚡ **Performance First**: Minimal dependencies, optimized Framer Motion animations.
-- 🔍 **Interactive Documentation**: Built-in sandbox with real-time prop controls and live preview.
-- 🛠️ **Developer Experience**: Fully typed with TypeScript, easy copy-paste structure.
-- 🌓 **Dark Mode Optimized**: Designed primarily for modern dark-themed interfaces.
+- **State-of-the-Art Design**: Deep focus on HSL-tailored colors, glassmorphism, and premium aesthetics.
+- **Performance First**: Minimal dependencies, optimized Framer Motion animations.
+- **Interactive Documentation**: Built-in sandbox with real-time prop controls and live preview.
+- **Developer Experience**: Fully typed with TypeScript, easy copy-paste structure.
+- **Dark Mode Optimized**: Designed primarily for modern dark-themed interfaces.
 
-## 🚀 Documentation
+## Documentation
 
 The library comes with a built-in documentation site and interactive playground.
 
 **[Explore the Documentation →](http://localhost:5173)** (Local server)
 
-## 📦 Installation
+## Installation
 
 > **Note:** The library is currently in development. NPM installation will be available soon.
 
@@ -64,7 +67,7 @@ npm install
 npm run dev
 ```
 
-## 🛠 Usage
+## Usage
 
 Integrating Gabri UI components into your project is straightforward:
 
@@ -82,7 +85,7 @@ function App() {
 }
 ```
 
-## 🗂 Components
+## Components
 
 | Component | Description | Tech | Tags |
 | :--- | :--- | :--- | :--- |
@@ -90,7 +93,7 @@ function App() {
 | **[Card Glass](./src/components/CardGlass/)** | Premium glassmorphism cards for various layouts. | React, Tailwind | `card`, `glass` |
 | **[Toggle Switch](./src/components/ToggleSwitch/)** | Modern animated switch with multiple sizes. | React, Framer Motion | `input`, `form` |
 
-## 🏗 Project Structure
+## Project Structure
 
 ```bash
 gabri-ui/
@@ -106,7 +109,7 @@ gabri-ui/
 └── package.json
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -116,12 +119,12 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 Licensed under the **MIT License**. See [LICENSE](./LICENSE) for more information.
 
 ---
 
 <p align="center">
-  Built with ❤️ by <a href="https://github.com/GabrielBaiano">Gabriel Baiano</a>
+  Built by <a href="https://github.com/GabrielBaiano">Gabriel Baiano</a>
 </p>
