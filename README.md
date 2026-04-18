@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> **Aviso:** Este projeto foi desenvolvido com o auxílio de Inteligência Artificial. Ele é um protótipo temporário e as funcionalidades e configurações ainda não estão operando de maneira adequada.
+> **Aviso:** Este README foi desenvolvido com o auxílio de Inteligência Artificial. Ele é um documento temporário e as informações aqui contidas podem não estar operando de maneira adequada no momento.
 
 <p align="center">
   <br />
