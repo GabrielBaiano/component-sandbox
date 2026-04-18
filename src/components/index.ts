@@ -27,9 +27,12 @@ import ToggleSwitchSource from './ToggleSwitch/index.tsx?raw'
 import { meta as ToggleSwitchMeta } from './ToggleSwitch/meta'
 import { schema as ToggleSwitchSchema } from './ToggleSwitch/schema'
 
+
+
 export const components: RegisteredComponent[] = [
   { meta: ButtonGradientMeta, Component: ButtonGradient, source: ButtonGradientSource },
   { meta: CardGlassMeta, Component: CardGlass, source: CardGlassSource },
   { meta: BarberLoyaltyWidgetMeta, Component: BarberLoyaltyWidget, source: BarberLoyaltyWidgetSource, schema: BarberLoyaltyWidgetSchema },
   { meta: ToggleSwitchMeta, Component: ToggleSwitch, source: ToggleSwitchSource, schema: ToggleSwitchSchema },
+
 ]
