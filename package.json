@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "Gabriel Baiano",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@vitejs/plugin-react": "^4.4.1",
     "framer-motion": "^12.6.5",
