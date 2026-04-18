@@ -7,4 +7,18 @@ export const meta: ComponentMeta = {
   tags: ['input', 'toggle', 'switch', 'form', 'interactive'],
   tech: ['react', 'framer-motion'],
   createdAt: '2026-04-16',
+  props: [
+    {
+      name: 'size',
+      type: '"sm" | "md" | "lg"',
+      default: '"md"',
+      description: 'The vertical size and horizontal width of the switch.',
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      default: 'false',
+      description: 'Whether the switch is interactive.',
+    },
+  ],
 }

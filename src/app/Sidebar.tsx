@@ -1,3 +1,4 @@
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { RegisteredComponent } from '../types'
 
@@ -13,27 +14,28 @@ const TECH_DOT: Record<string, string> = {
 
 interface SidebarProps {
   components: RegisteredComponent[]
-  selected: string | null
-  onSelect: (id: string) => void
   query: string
   onQueryChange: (q: string) => void
 }
 
 export default function Sidebar({
   components,
-  selected,
-  onSelect,
   query,
   onQueryChange,
 }: SidebarProps) {
+  const location = useLocation()
+  
   return (
     <aside className="w-72 flex-shrink-0 flex flex-col h-full border-r border-white/[0.05] bg-black/60 backdrop-blur-md">
 
       {/* Header */}
       <div className="px-5 pt-6 pb-4 border-b border-white/[0.05]">
-        <div className="flex items-center gap-2.5 mb-5">
+        <Link 
+          to="/"
+          className="flex items-center gap-2.5 mb-5 group active:scale-95 transition-transform"
+        >
           <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:shadow-[0_0_15px_rgba(232,80,2,0.4)] transition-all"
             style={{ background: 'linear-gradient(135deg, #e85002, #c10801)' }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
@@ -44,12 +46,12 @@ export default function Sidebar({
             </svg>
           </div>
           <div>
-            <h1 className="text-sm font-bold text-white leading-none">Component Sandbox</h1>
+            <h1 className="text-sm font-bold text-white leading-none group-hover:text-accent-400 transition-colors">Component Sandbox</h1>
             <p className="text-[10px] text-white/30 mt-0.5 font-mono">
-              {components.length} component{components.length !== 1 ? 's' : ''}
+              Build your library
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* Search */}
         <div className="relative">
@@ -82,7 +84,7 @@ export default function Sidebar({
       </div>
 
       {/* Component list */}
-      <nav className="flex-1 overflow-y-auto p-3 space-y-0.5">
+      <nav className="flex-1 overflow-y-auto p-3 space-y-0.5 custom-scrollbar">
         <AnimatePresence>
           {components.length === 0 ? (
             <motion.p
@@ -94,52 +96,55 @@ export default function Sidebar({
             </motion.p>
           ) : (
             components.map((reg, i) => {
-              const isActive = reg.meta.id === selected
+              const isActive = location.pathname === `/components/${reg.meta.id}`
               return (
-                <motion.button
+                <Link
                   key={reg.meta.id}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                  onClick={() => onSelect(reg.meta.id)}
-                  id={`nav-${reg.meta.id}`}
-                  className={`w-full text-left px-3 py-3 rounded-xl transition-all group
-                    ${isActive
-                      ? 'border border-accent-400/30'
-                      : 'hover:bg-white/[0.03] border border-transparent'
-                    }`}
-                  style={isActive ? { background: 'rgba(232,80,2,0.1)' } : {}}
+                  to={`/components/${reg.meta.id}`}
+                  className="block"
                 >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
-                      <p className={`text-sm font-medium truncate ${isActive ? 'text-accent-400' : 'text-white/70 group-hover:text-white/90'}`}>
-                        {reg.meta.name}
-                      </p>
-                      <p className="text-[11px] text-white/25 mt-0.5 line-clamp-2 leading-relaxed">
-                        {reg.meta.description}
-                      </p>
+                  <motion.div
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
+                    className={`w-full text-left px-3 py-3 rounded-xl transition-all group
+                      ${isActive
+                        ? 'border border-accent-400/30'
+                        : 'hover:bg-white/[0.03] border border-transparent'
+                      }`}
+                    style={isActive ? { background: 'rgba(232,80,2,0.1)' } : {}}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <p className={`text-sm font-medium truncate ${isActive ? 'text-accent-400' : 'text-white/70 group-hover:text-white/90'}`}>
+                          {reg.meta.name}
+                        </p>
+                        <p className="text-[11px] text-white/25 mt-0.5 line-clamp-2 leading-relaxed">
+                          {reg.meta.description}
+                        </p>
+                      </div>
+                      {isActive && (
+                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#e85002' }} />
+                      )}
                     </div>
-                    {isActive && (
-                      <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#e85002' }} />
-                    )}
-                  </div>
 
-                  {/* Tech badges — neutral style with a colored dot */}
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {reg.meta.tech.map(t => (
-                      <span
-                        key={t}
-                        className="flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-md border font-mono bg-white/[0.04] text-white/40 border-white/[0.07]"
-                      >
+                    {/* Tech badges — neutral style with a colored dot */}
+                    <div className="flex flex-wrap gap-1 mt-2">
+                      {reg.meta.tech.map(t => (
                         <span
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{ background: TECH_DOT[t] ?? '#646464' }}
-                        />
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </motion.button>
+                          key={t}
+                          className="flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-md border font-mono bg-white/[0.04] text-white/40 border-white/[0.07]"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{ background: TECH_DOT[t] ?? '#646464' }}
+                          />
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                </Link>
               )
             })
           )}
@@ -149,10 +154,26 @@ export default function Sidebar({
       {/* Footer hint */}
       <div className="px-5 py-4 border-t border-white/[0.05]">
         <p className="text-[10px] text-white/20 font-mono leading-relaxed">
-          Add components in<br />
+          {components.length} component{components.length !== 1 ? 's' : ''} available<br />
           <span className="text-white/30">src/components/index.ts</span>
         </p>
       </div>
+
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(232, 80, 2, 0.2);
+        }
+      `}</style>
     </aside>
   )
 }

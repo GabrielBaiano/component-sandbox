@@ -1,15 +1,14 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { components } from '../components'
 import Sidebar from './Sidebar'
-import Preview from './Preview'
+import HomePage from './HomePage'
+import ComponentPage from './ComponentPage'
 
 const DEFAULT_BG = '#0d0d0d'
 
 export default function App() {
-  const [selectedId, setSelectedId] = useState<string | null>(components[0]?.meta.id ?? null)
   const [query, setQuery] = useState('')
-  const [bg, setBg] = useState(DEFAULT_BG)
-  const [controlValues, setControlValues] = useState<Record<string, unknown>>({})
 
   const filtered = useMemo(() => {
     if (!query.trim()) return components
@@ -21,24 +20,6 @@ export default function App() {
       reg.meta.tech.some(t => t.toLowerCase().includes(q))
     )
   }, [query])
-
-  const selected = components.find(r => r.meta.id === selectedId) ?? null
-
-  // Reset controls to schema defaults when active component changes
-  useEffect(() => {
-    if (!selected?.schema) {
-      setControlValues({})
-      return
-    }
-    const defaults = Object.fromEntries(
-      selected.schema.controls.map(c => [c.id, c.default])
-    )
-    setControlValues(defaults)
-  }, [selected?.meta.id])
-
-  function handleControlChange(id: string, value: unknown) {
-    setControlValues(prev => ({ ...prev, [id]: value }))
-  }
 
   return (
     <div className="flex h-screen overflow-hidden bg-surface-950">
@@ -54,18 +35,17 @@ export default function App() {
       <div className="relative z-10 flex w-full h-full">
         <Sidebar
           components={filtered}
-          selected={selectedId}
-          onSelect={setSelectedId}
           query={query}
           onQueryChange={setQuery}
         />
-        <Preview
-          registration={selected}
-          bg={bg}
-          onBgChange={setBg}
-          controlValues={controlValues}
-          onControlChange={handleControlChange}
-        />
+        
+        <main className="flex-1 flex flex-col h-full bg-surface-950/20 backdrop-blur-[2px]">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/components/:id" element={<ComponentPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
       </div>
     </div>
   )

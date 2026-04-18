@@ -24,10 +24,11 @@ export default function Preview({
   const hasControls = !!(registration?.schema?.controls.length)
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-hidden">
+    <div className="flex-1 flex flex-col h-full">
 
       {/* ── Toolbar ── */}
-      <div className="flex items-center justify-between px-6 py-3.5 border-b border-white/[0.06] bg-surface-900/40 backdrop-blur-sm flex-shrink-0">
+      {/* ── Toolbar (Floating Pill) ── */}
+      <div className="mx-4 mt-4 mb-2 flex items-center justify-between px-6 py-3 bg-surface-900/60 backdrop-blur-md border border-white/[0.08] rounded-2xl flex-shrink-0 shadow-2xl shadow-black/40">
         <div className="flex items-center gap-4 min-w-0">
           {registration ? (
             <>

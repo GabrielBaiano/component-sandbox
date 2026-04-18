@@ -1,5 +1,18 @@
 export type ComponentTech = 'react' | 'tailwind' | 'framer-motion' | 'html-css' | 'typescript'
 
+export interface ComponentProp {
+  /** Prop name */
+  name: string
+  /** TypeScript type string */
+  type: string
+  /** Default value as a string */
+  default: string
+  /** Description of what the prop does */
+  description: string
+  /** Whether the prop is required */
+  required?: boolean
+}
+
 export interface ComponentMeta {
   /** Unique slug used as identifier */
   id: string
@@ -13,6 +26,8 @@ export interface ComponentMeta {
   tech: ComponentTech[]
   /** Optional creation date */
   createdAt?: string
+  /** Props documentation — drives the Props Table on the component page */
+  props?: ComponentProp[]
 }
 
 // ── Schema / Controls ──────────────────────────────────────────────────────────

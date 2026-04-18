@@ -146,9 +146,9 @@ export default function ControlsPanel({ schema, values, onChange }: ControlsPane
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex-shrink-0 border-t border-white/[0.06] bg-surface-900/30 backdrop-blur-sm"
+      className="mx-4 mb-4 mt-2 flex-shrink-0 bg-surface-900/60 backdrop-blur-md border border-white/[0.08] rounded-2xl shadow-2xl shadow-black/40 overflow-hidden"
     >
       <div className="px-6 py-4">
         <div className="flex items-center gap-2 mb-4">
