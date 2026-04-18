@@ -17,10 +17,7 @@ import CardGlass from './CardGlass'
 import CardGlassSource from './CardGlass/index.tsx?raw'
 import { meta as CardGlassMeta } from './CardGlass/meta'
 
-import BarberLoyaltyWidget from './BarberLoyaltyWidget'
-import BarberLoyaltyWidgetSource from './BarberLoyaltyWidget/index.tsx?raw'
-import { meta as BarberLoyaltyWidgetMeta } from './BarberLoyaltyWidget/meta'
-import { schema as BarberLoyaltyWidgetSchema } from './BarberLoyaltyWidget/schema'
+
 
 import ToggleSwitch from './ToggleSwitch'
 import ToggleSwitchSource from './ToggleSwitch/index.tsx?raw'
@@ -32,7 +29,7 @@ import { schema as ToggleSwitchSchema } from './ToggleSwitch/schema'
 export const components: RegisteredComponent[] = [
   { meta: ButtonGradientMeta, Component: ButtonGradient, source: ButtonGradientSource },
   { meta: CardGlassMeta, Component: CardGlass, source: CardGlassSource },
-  { meta: BarberLoyaltyWidgetMeta, Component: BarberLoyaltyWidget, source: BarberLoyaltyWidgetSource, schema: BarberLoyaltyWidgetSchema },
+
   { meta: ToggleSwitchMeta, Component: ToggleSwitch, source: ToggleSwitchSource, schema: ToggleSwitchSchema },
 
 ]
