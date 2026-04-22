@@ -1,4 +1,4 @@
-import type { ComponentSchema } from '../../types'
+import type { ComponentSchema } from '../../types';
 
 export const schema: ComponentSchema = {
   controls: [
@@ -20,4 +20,4 @@ export const schema: ComponentSchema = {
       default: false,
     },
   ],
-}
+};

@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import type { RegisteredComponent } from '../types'
-import BgPicker from './BgPicker'
-import ControlsPanel from './ControlsPanel'
-import CodeViewer from './CodeViewer'
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import type { RegisteredComponent } from '../types';
+import BgPicker from './BgPicker';
+import ControlsPanel from './ControlsPanel';
+import CodeViewer from './CodeViewer';
 
 interface PreviewProps {
-  registration: RegisteredComponent | null
-  bg: string
-  onBgChange: (bg: string) => void
-  controlValues: Record<string, unknown>
-  onControlChange: (id: string, value: unknown) => void
+  registration: RegisteredComponent | null;
+  bg: string;
+  onBgChange: (bg: string) => void;
+  controlValues: Record<string, unknown>;
+  onControlChange: (id: string, value: unknown) => void;
 }
 
 export default function Preview({
@@ -20,64 +20,67 @@ export default function Preview({
   controlValues,
   onControlChange,
 }: PreviewProps) {
-  const [tab, setTab] = useState<'preview' | 'code'>('preview')
-  const hasControls = !!(registration?.schema?.controls.length)
+  const [tab, setTab] = useState<'preview' | 'code'>('preview');
+  const hasControls = !!registration?.schema?.controls.length;
 
   return (
-    <div className="flex-1 flex flex-col h-full">
-
+    <div className="flex h-full flex-1 flex-col">
       {/* ── Toolbar ── */}
       {/* ── Toolbar (Floating Pill) ── */}
-      <div className="mx-4 mt-4 mb-2 flex items-center justify-between px-6 py-3 bg-surface-900/60 backdrop-blur-md border border-white/[0.08] rounded-2xl flex-shrink-0 shadow-2xl shadow-black/40">
-        <div className="flex items-center gap-4 min-w-0">
+      <div className="mx-4 mb-2 mt-4 flex flex-shrink-0 items-center justify-between rounded-2xl border border-white/[0.08] bg-surface-900/60 px-6 py-3 shadow-2xl shadow-black/40 backdrop-blur-md">
+        <div className="flex min-w-0 items-center gap-4">
           {registration ? (
             <>
               <div className="flex items-center gap-3">
-                <h2 className="text-sm font-semibold text-white truncate">{registration.meta.name}</h2>
-                <span className="text-white/20 flex-shrink-0">·</span>
+                <h2 className="truncate text-sm font-semibold text-white">
+                  {registration.meta.name}
+                </h2>
+                <span className="flex-shrink-0 text-white/20">·</span>
               </div>
-              
+
               {/* Tab Toggle */}
-              <div className="flex bg-white/5 p-1 rounded-xl border border-white/5">
+              <div className="flex rounded-xl border border-white/5 bg-white/5 p-1">
                 <button
                   onClick={() => setTab('preview')}
-                  className={`px-3 py-1 text-[11px] font-medium rounded-lg transition-all ${tab === 'preview' ? 'bg-accent-400 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+                  className={`rounded-lg px-3 py-1 text-[11px] font-medium transition-all ${tab === 'preview' ? 'bg-accent-400 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
                 >
                   Preview
                 </button>
                 <button
                   onClick={() => setTab('code')}
-                  className={`px-3 py-1 text-[11px] font-medium rounded-lg transition-all ${tab === 'code' ? 'bg-accent-400 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+                  className={`rounded-lg px-3 py-1 text-[11px] font-medium transition-all ${tab === 'code' ? 'bg-accent-400 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
                 >
                   Code
                 </button>
               </div>
             </>
           ) : (
-            <h2 className="text-sm text-white/30">Select a component from the sidebar</h2>
+            <h2 className="text-sm text-white/30">
+              Select a component from the sidebar
+            </h2>
           )}
         </div>
 
         {registration && (
-          <div className="flex items-center gap-2 flex-shrink-0 ml-4">
+          <div className="ml-4 flex flex-shrink-0 items-center gap-2">
             {/* Tags (only in preview) */}
             {tab === 'preview' && (
-              <div className="hidden sm:flex items-center gap-1.5">
-                {registration.meta.tags.slice(0, 3).map(tag => (
+              <div className="hidden items-center gap-1.5 sm:flex">
+                {registration.meta.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-white/30 border border-white/10"
+                    className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-white/30"
                   >
                     #{tag}
                   </span>
                 ))}
-                <div className="w-px h-4 bg-white/10 mx-1" />
+                <div className="mx-1 h-4 w-px bg-white/10" />
                 <BgPicker value={bg} onChange={onBgChange} />
               </div>
             )}
-            
+
             {tab === 'code' && (
-              <div className="text-[10px] text-white/30 font-mono">
+              <div className="font-mono text-[10px] text-white/30">
                 {registration.meta.tech.join(' + ')}
               </div>
             )}
@@ -86,7 +89,7 @@ export default function Preview({
       </div>
 
       {/* ── Content area ── */}
-      <div className="flex-1 overflow-auto p-8 min-h-0">
+      <div className="min-h-0 flex-1 overflow-auto p-8">
         <AnimatePresence mode="wait">
           {registration ? (
             <motion.div
@@ -99,7 +102,7 @@ export default function Preview({
             >
               {tab === 'preview' ? (
                 <div
-                  className="rounded-2xl overflow-hidden flex items-center justify-center min-h-[480px] h-full"
+                  className="flex h-full min-h-[480px] items-center justify-center overflow-hidden rounded-2xl"
                   style={{
                     background: bg,
                     border: '1px solid rgba(255,255,255,0.04)',
@@ -108,9 +111,9 @@ export default function Preview({
                   <registration.Component {...controlValues} />
                 </div>
               ) : (
-                <CodeViewer 
-                  source={registration.source} 
-                  filename={`${registration.meta.id}/index.tsx`} 
+                <CodeViewer
+                  source={registration.source}
+                  filename={`${registration.meta.id}/index.tsx`}
                 />
               )}
             </motion.div>
@@ -119,21 +122,32 @@ export default function Preview({
               key="empty"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="min-h-[480px] flex flex-col items-center justify-center gap-4"
+              className="flex min-h-[480px] flex-col items-center justify-center gap-4"
             >
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center opacity-20"
-                style={{ background: 'linear-gradient(135deg, #e85002, #c10801)' }}
+                className="flex h-16 w-16 items-center justify-center rounded-2xl opacity-20"
+                style={{
+                  background: 'linear-gradient(135deg, #e85002, #c10801)',
+                }}
               >
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="1.5"
+                >
                   <rect x="3" y="3" width="7" height="7" rx="1" />
                   <rect x="14" y="3" width="7" height="7" rx="1" />
                   <rect x="3" y="14" width="7" height="7" rx="1" />
                   <rect x="14" y="14" width="7" height="7" rx="1" />
                 </svg>
               </div>
-              <p className="text-white/20 text-sm">No component selected</p>
-              <p className="text-white/10 text-xs font-mono">← pick one from the sidebar</p>
+              <p className="text-sm text-white/20">No component selected</p>
+              <p className="font-mono text-xs text-white/10">
+                ← pick one from the sidebar
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -150,5 +164,5 @@ export default function Preview({
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

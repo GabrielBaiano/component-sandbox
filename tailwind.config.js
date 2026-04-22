@@ -1,30 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Google Sans Flex"', '"Google Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: [
+          '"Google Sans Flex"',
+          '"Google Sans"',
+          'Inter',
+          'system-ui',
+          'sans-serif',
+        ],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
         surface: {
-          50:  '#f9f9f9',  // White
+          50: '#f9f9f9', // White
           100: '#e0e0e0',
-          200: '#a7a7a7',  // Light Gray
-          400: '#646464',  // Gray
-          800: '#333333',  // Dark Gray
+          200: '#a7a7a7', // Light Gray
+          400: '#646464', // Gray
+          800: '#333333', // Dark Gray
           900: '#1a1a1a',
           950: '#0d0d0d',
         },
         accent: {
-          300: '#f59e0b',  // Amber / warm yellow
-          400: '#e85002',  // Branding Orange (primary)
-          500: '#c10801',  // Deep red-orange
+          300: '#f59e0b', // Amber / warm yellow
+          400: '#e85002', // Branding Orange (primary)
+          500: '#c10801', // Deep red-orange
           600: '#9a0601',
         },
       },
@@ -45,4 +48,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

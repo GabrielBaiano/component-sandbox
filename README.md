@@ -76,10 +76,10 @@ import { ToggleSwitch } from '@gabri/ui';
 
 function App() {
   return (
-    <ToggleSwitch 
-      size="md" 
-      disabled={false} 
-      onChange={(val) => console.log(val)} 
+    <ToggleSwitch
+      size="md"
+      disabled={false}
+      onChange={(val) => console.log(val)}
     />
   );
 }
@@ -87,11 +87,11 @@ function App() {
 
 ## Components
 
-| Component | Description | Tech | Tags |
-| :--- | :--- | :--- | :--- |
-| **[Button Gradient](./src/components/ButtonGradient/)** | Animated gradient buttons with glow effects. | React, Framer Motion | `button`, `cta` |
-| **[Card Glass](./src/components/CardGlass/)** | Premium glassmorphism cards for various layouts. | React, Tailwind | `card`, `glass` |
-| **[Toggle Switch](./src/components/ToggleSwitch/)** | Modern animated switch with multiple sizes. | React, Framer Motion | `input`, `form` |
+| Component                                               | Description                                      | Tech                 | Tags            |
+| :------------------------------------------------------ | :----------------------------------------------- | :------------------- | :-------------- |
+| **[Button Gradient](./src/components/ButtonGradient/)** | Animated gradient buttons with glow effects.     | React, Framer Motion | `button`, `cta` |
+| **[Card Glass](./src/components/CardGlass/)**           | Premium glassmorphism cards for various layouts. | React, Tailwind      | `card`, `glass` |
+| **[Toggle Switch](./src/components/ToggleSwitch/)**     | Modern animated switch with multiple sizes.      | React, Framer Motion | `input`, `form` |
 
 ## Project Structure
 

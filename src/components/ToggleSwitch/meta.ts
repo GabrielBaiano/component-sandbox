@@ -1,4 +1,4 @@
-import type { ComponentMeta } from '../../types'
+import type { ComponentMeta } from '../../types';
 
 export const meta: ComponentMeta = {
   id: 'toggle-switch',
@@ -21,4 +21,4 @@ export const meta: ComponentMeta = {
       description: 'Whether the switch is interactive.',
     },
   ],
-}
+};

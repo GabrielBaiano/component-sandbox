@@ -1,86 +1,104 @@
-import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // ── Preset backgrounds ────────────────────────────────────────────────────────
 
 const PRESETS = [
   // Dark
-  { label: 'Near black',    value: '#0d0d0d' },
-  { label: 'Pitch black',   value: '#000000' },
-  { label: 'Dark brown',    value: '#1a0a00' },
-  { label: 'Charcoal',      value: '#1c1c1c' },
-  { label: 'Dark gray',     value: '#333333' },
+  { label: 'Near black', value: '#0d0d0d' },
+  { label: 'Pitch black', value: '#000000' },
+  { label: 'Dark brown', value: '#1a0a00' },
+  { label: 'Charcoal', value: '#1c1c1c' },
+  { label: 'Dark gray', value: '#333333' },
   { label: 'Warm charcoal', value: '#1a1208' },
   // Light
-  { label: 'White',         value: '#ffffff' },
-  { label: 'Off-white',     value: '#f9f9f9' },
-  { label: 'Light gray',    value: '#f0f0f0' },
-  { label: 'Warm white',    value: '#faf8f5' },
-  { label: 'Cream',         value: '#fffdf0' },
-  { label: 'Stone',         value: '#f5f0eb' },
+  { label: 'White', value: '#ffffff' },
+  { label: 'Off-white', value: '#f9f9f9' },
+  { label: 'Light gray', value: '#f0f0f0' },
+  { label: 'Warm white', value: '#faf8f5' },
+  { label: 'Cream', value: '#fffdf0' },
+  { label: 'Stone', value: '#f5f0eb' },
   // Mid
-  { label: 'Gray',          value: '#646464' },
-  { label: 'Dark gray 2',   value: '#2a2a2a' },
-  { label: 'Smoke',         value: '#1a1a1a' },
-  { label: 'Zinc',          value: '#27272a' },
-  { label: 'Warm dark',     value: '#18120a' },
-  { label: 'Amber dark',    value: '#1a1200' },
-]
+  { label: 'Gray', value: '#646464' },
+  { label: 'Dark gray 2', value: '#2a2a2a' },
+  { label: 'Smoke', value: '#1a1a1a' },
+  { label: 'Zinc', value: '#27272a' },
+  { label: 'Warm dark', value: '#18120a' },
+  { label: 'Amber dark', value: '#1a1200' },
+];
 
 const GRADIENT_PRESETS = [
-  { label: 'Radial orange',  value: 'radial-gradient(ellipse at 50% 0%, rgba(232,80,2,0.18), #0d0d0d)' },
-  { label: 'Radial amber',   value: 'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.15), #0d0d0d)' },
-  { label: 'Brand mesh',     value: 'radial-gradient(at 30% 20%, #1a0800 0%, #000000 50%, #1a0d00 100%)' },
-  { label: 'Warm gradient',  value: 'linear-gradient(135deg, #1a0800 0%, #2a1000 50%, #1a0a00 100%)' },
-  { label: 'Midnight',       value: 'linear-gradient(180deg, #111111 0%, #000000 100%)' },
-  { label: 'Ember',          value: 'linear-gradient(135deg, #1c0a00 0%, #0d0d0d 60%, #1a0800 100%)' },
-]
+  {
+    label: 'Radial orange',
+    value: 'radial-gradient(ellipse at 50% 0%, rgba(232,80,2,0.18), #0d0d0d)',
+  },
+  {
+    label: 'Radial amber',
+    value: 'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.15), #0d0d0d)',
+  },
+  {
+    label: 'Brand mesh',
+    value: 'radial-gradient(at 30% 20%, #1a0800 0%, #000000 50%, #1a0d00 100%)',
+  },
+  {
+    label: 'Warm gradient',
+    value: 'linear-gradient(135deg, #1a0800 0%, #2a1000 50%, #1a0a00 100%)',
+  },
+  {
+    label: 'Midnight',
+    value: 'linear-gradient(180deg, #111111 0%, #000000 100%)',
+  },
+  {
+    label: 'Ember',
+    value: 'linear-gradient(135deg, #1c0a00 0%, #0d0d0d 60%, #1a0800 100%)',
+  },
+];
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 interface BgPickerProps {
-  value: string
-  onChange: (bg: string) => void
+  value: string;
+  onChange: (bg: string) => void;
 }
 
 export default function BgPicker({ value, onChange }: BgPickerProps) {
-  const [open, setOpen] = useState(false)
-  const [tab, setTab] = useState<'presets' | 'custom'>('presets')
-  const [hex, setHex] = useState('#0a0a14')
-  const [hexInput, setHexInput] = useState('#0a0a14')
-  const ref = useRef<HTMLDivElement>(null)
-  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const [open, setOpen] = useState(false);
+  const [tab, setTab] = useState<'presets' | 'custom'>('presets');
+  const [hex, setHex] = useState('#0a0a14');
+  const [hexInput, setHexInput] = useState('#0a0a14');
+  const ref = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   // Close on click outside
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false)
+        setOpen(false);
       }
     }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [])
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   function openPicker() {
-    clearTimeout(timerRef.current)
-    setOpen(true)
+    clearTimeout(timerRef.current);
+    setOpen(true);
   }
 
   function closePicker() {
-    timerRef.current = setTimeout(() => setOpen(false), 200)
+    timerRef.current = setTimeout(() => setOpen(false), 200);
   }
 
   function applyHex(raw: string) {
-    const clean = raw.startsWith('#') ? raw : `#${raw}`
+    const clean = raw.startsWith('#') ? raw : `#${raw}`;
     if (/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(clean)) {
-      setHex(clean)
-      onChange(clean)
+      setHex(clean);
+      onChange(clean);
     }
-    setHexInput(clean)
+    setHexInput(clean);
   }
 
-  const isGradient = value.includes('gradient')
+  const isGradient = value.includes('gradient');
 
   return (
     <div ref={ref} className="relative" onMouseLeave={closePicker}>
@@ -88,20 +106,21 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
       <button
         id="bg-picker-trigger"
         onMouseEnter={openPicker}
-        onClick={() => setOpen(o => !o)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-white/50
-                   hover:text-white/80 border border-white/10 hover:border-white/20
-                   transition-all group"
+        onClick={() => setOpen((o) => !o)}
+        className="group flex items-center gap-2 rounded-lg border border-white/10 px-3 py-1.5 text-xs text-white/50 transition-all hover:border-white/20 hover:text-white/80"
       >
         {/* Color preview */}
         <span
-          className="w-3.5 h-3.5 rounded-sm border border-white/10 flex-shrink-0"
+          className="h-3.5 w-3.5 flex-shrink-0 rounded-sm border border-white/10"
           style={{ background: value }}
         />
         Background
         <svg
-          className={`w-2.5 h-2.5 transition-transform ${open ? 'rotate-180' : ''}`}
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+          className={`h-2.5 w-2.5 transition-transform ${open ? 'rotate-180' : ''}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
         >
           <path d="M6 9l6 6 6-6" />
         </svg>
@@ -116,17 +135,16 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
             onMouseEnter={openPicker}
-            className="absolute right-0 top-full mt-2 z-50 w-72 rounded-2xl border border-white/[0.08] shadow-2xl overflow-hidden"
+            className="absolute right-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-2xl border border-white/[0.08] shadow-2xl"
             style={{ background: '#111111' }}
           >
             {/* Tabs */}
             <div className="flex border-b border-white/[0.06]">
-              {(['presets', 'custom'] as const).map(t => (
+              {(['presets', 'custom'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
-                  className={`flex-1 py-2.5 text-xs font-medium capitalize transition-colors
-                    ${tab === t ? 'text-white border-b border-accent-400' : 'text-white/30 hover:text-white/60'}`}
+                  className={`flex-1 py-2.5 text-xs font-medium capitalize transition-colors ${tab === t ? 'border-b border-accent-400 text-white' : 'text-white/30 hover:text-white/60'}`}
                 >
                   {t === 'presets' ? 'Presets' : 'Custom'}
                 </button>
@@ -138,17 +156,22 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
                 <div className="flex flex-col gap-4">
                   {/* Solid presets */}
                   <div>
-                    <p className="text-[10px] text-white/25 uppercase tracking-wider mb-2 font-mono">Solid</p>
+                    <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-white/25">
+                      Solid
+                    </p>
                     <div className="grid grid-cols-6 gap-1.5">
-                      {PRESETS.map(p => (
+                      {PRESETS.map((p) => (
                         <button
                           key={p.value}
                           title={p.label}
                           onClick={() => onChange(p.value)}
-                          className="w-8 h-8 rounded-lg border-2 transition-all hover:scale-110"
+                          className="h-8 w-8 rounded-lg border-2 transition-all hover:scale-110"
                           style={{
                             background: p.value,
-                            borderColor: value === p.value ? '#e85002' : 'rgba(255,255,255,0.08)',
+                            borderColor:
+                              value === p.value
+                                ? '#e85002'
+                                : 'rgba(255,255,255,0.08)',
                           }}
                         />
                       ))}
@@ -157,17 +180,22 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
 
                   {/* Gradient presets */}
                   <div>
-                    <p className="text-[10px] text-white/25 uppercase tracking-wider mb-2 font-mono">Gradients</p>
+                    <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-white/25">
+                      Gradients
+                    </p>
                     <div className="grid grid-cols-3 gap-2">
-                      {GRADIENT_PRESETS.map(g => (
+                      {GRADIENT_PRESETS.map((g) => (
                         <button
                           key={g.label}
                           title={g.label}
                           onClick={() => onChange(g.value)}
-                          className="h-10 rounded-xl border-2 transition-all hover:scale-105 text-[9px] text-white/40 font-mono"
+                          className="h-10 rounded-xl border-2 font-mono text-[9px] text-white/40 transition-all hover:scale-105"
                           style={{
                             background: g.value,
-                            borderColor: value === g.value ? '#e85002' : 'rgba(255,255,255,0.08)',
+                            borderColor:
+                              value === g.value
+                                ? '#e85002'
+                                : 'rgba(255,255,255,0.08)',
                           }}
                         >
                           {value === g.value && '✓'}
@@ -185,30 +213,34 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
                       <input
                         type="color"
                         value={isGradient ? '#0a0a14' : hex}
-                        onChange={e => {
-                          setHex(e.target.value)
-                          setHexInput(e.target.value)
-                          onChange(e.target.value)
+                        onChange={(e) => {
+                          setHex(e.target.value);
+                          setHexInput(e.target.value);
+                          onChange(e.target.value);
                         }}
-                        className="w-10 h-10 rounded-xl cursor-pointer opacity-0 absolute inset-0"
+                        className="absolute inset-0 h-10 w-10 cursor-pointer rounded-xl opacity-0"
                       />
                       <div
-                        className="w-10 h-10 rounded-xl border border-white/10 pointer-events-none"
+                        className="pointer-events-none h-10 w-10 rounded-xl border border-white/10"
                         style={{ background: isGradient ? '#0a0a14' : hex }}
                       />
                     </div>
                     <div className="flex-1">
-                      <p className="text-[10px] text-white/30 mb-1">Hex value</p>
-                      <div className="flex items-center gap-1.5 bg-surface-950/60 border border-white/10 rounded-lg px-3 py-1.5">
-                        <span className="text-white/25 text-xs">#</span>
+                      <p className="mb-1 text-[10px] text-white/30">
+                        Hex value
+                      </p>
+                      <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-surface-950/60 px-3 py-1.5">
+                        <span className="text-xs text-white/25">#</span>
                         <input
                           type="text"
                           value={hexInput.replace('#', '')}
-                          onChange={e => setHexInput('#' + e.target.value)}
-                          onBlur={e => applyHex(e.target.value)}
-                          onKeyDown={e => e.key === 'Enter' && applyHex(hexInput)}
+                          onChange={(e) => setHexInput('#' + e.target.value)}
+                          onBlur={(e) => applyHex(e.target.value)}
+                          onKeyDown={(e) =>
+                            e.key === 'Enter' && applyHex(hexInput)
+                          }
                           maxLength={6}
-                          className="flex-1 bg-transparent text-xs text-white font-mono outline-none w-full"
+                          className="w-full flex-1 bg-transparent font-mono text-xs text-white outline-none"
                           placeholder="0a0a14"
                         />
                       </div>
@@ -217,16 +249,32 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
 
                   {/* Quick solids */}
                   <div>
-                    <p className="text-[10px] text-white/25 uppercase tracking-wider mb-2 font-mono">Quick picks</p>
+                    <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-white/25">
+                      Quick picks
+                    </p>
                     <div className="grid grid-cols-8 gap-1">
-                      {['#000000', '#ffffff', '#e85002', '#c10801', '#f59e0b', '#d97706', '#333333', '#646464'].map(c => (
+                      {[
+                        '#000000',
+                        '#ffffff',
+                        '#e85002',
+                        '#c10801',
+                        '#f59e0b',
+                        '#d97706',
+                        '#333333',
+                        '#646464',
+                      ].map((c) => (
                         <button
                           key={c}
-                          onClick={() => { setHex(c); setHexInput(c); onChange(c) }}
-                          className="w-7 h-7 rounded-lg border-2 hover:scale-110 transition-transform"
+                          onClick={() => {
+                            setHex(c);
+                            setHexInput(c);
+                            onChange(c);
+                          }}
+                          className="h-7 w-7 rounded-lg border-2 transition-transform hover:scale-110"
                           style={{
                             background: c,
-                            borderColor: value === c ? '#e85002' : 'rgba(255,255,255,0.1)',
+                            borderColor:
+                              value === c ? '#e85002' : 'rgba(255,255,255,0.1)',
                           }}
                         />
                       ))}
@@ -236,13 +284,15 @@ export default function BgPicker({ value, onChange }: BgPickerProps) {
               )}
 
               {/* Current value display */}
-              <div className="mt-3 pt-3 border-t border-white/[0.06]">
-                <p className="text-[9px] text-white/20 font-mono truncate">{value}</p>
+              <div className="mt-3 border-t border-white/[0.06] pt-3">
+                <p className="truncate font-mono text-[9px] text-white/20">
+                  {value}
+                </p>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

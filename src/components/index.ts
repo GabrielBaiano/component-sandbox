@@ -7,29 +7,33 @@
 //   4. Import everything below and add to the `components` array
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { RegisteredComponent } from '../types'
+import type { RegisteredComponent } from '../types';
 
-import ButtonGradient from './ButtonGradient'
-import ButtonGradientSource from './ButtonGradient/index.tsx?raw'
-import { meta as ButtonGradientMeta } from './ButtonGradient/meta'
+import ButtonGradient from './ButtonGradient';
+import ButtonGradientSource from './ButtonGradient/index.tsx?raw';
+import { meta as ButtonGradientMeta } from './ButtonGradient/meta';
 
-import CardGlass from './CardGlass'
-import CardGlassSource from './CardGlass/index.tsx?raw'
-import { meta as CardGlassMeta } from './CardGlass/meta'
+import CardGlass from './CardGlass';
+import CardGlassSource from './CardGlass/index.tsx?raw';
+import { meta as CardGlassMeta } from './CardGlass/meta';
 
-
-
-import ToggleSwitch from './ToggleSwitch'
-import ToggleSwitchSource from './ToggleSwitch/index.tsx?raw'
-import { meta as ToggleSwitchMeta } from './ToggleSwitch/meta'
-import { schema as ToggleSwitchSchema } from './ToggleSwitch/schema'
-
-
+import ToggleSwitch from './ToggleSwitch';
+import ToggleSwitchSource from './ToggleSwitch/index.tsx?raw';
+import { meta as ToggleSwitchMeta } from './ToggleSwitch/meta';
+import { schema as ToggleSwitchSchema } from './ToggleSwitch/schema';
 
 export const components: RegisteredComponent[] = [
-  { meta: ButtonGradientMeta, Component: ButtonGradient, source: ButtonGradientSource },
+  {
+    meta: ButtonGradientMeta,
+    Component: ButtonGradient,
+    source: ButtonGradientSource,
+  },
   { meta: CardGlassMeta, Component: CardGlass, source: CardGlassSource },
 
-  { meta: ToggleSwitchMeta, Component: ToggleSwitch, source: ToggleSwitchSource, schema: ToggleSwitchSchema },
-
-]
+  {
+    meta: ToggleSwitchMeta,
+    Component: ToggleSwitch,
+    source: ToggleSwitchSource,
+    schema: ToggleSwitchSchema,
+  },
+];
