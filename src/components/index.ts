@@ -22,6 +22,10 @@ import ToggleSwitchSource from './ToggleSwitch/index.tsx?raw';
 import { meta as ToggleSwitchMeta } from './ToggleSwitch/meta';
 import { schema as ToggleSwitchSchema } from './ToggleSwitch/schema';
 
+import Calendar from './Calendar';
+import CalendarSource from './Calendar/index.tsx?raw';
+import { meta as CalendarMeta } from './Calendar/meta';
+
 export const components: RegisteredComponent[] = [
   {
     meta: ButtonGradientMeta,
@@ -35,5 +39,11 @@ export const components: RegisteredComponent[] = [
     Component: ToggleSwitch,
     source: ToggleSwitchSource,
     schema: ToggleSwitchSchema,
+  },
+
+  {
+    meta: CalendarMeta,
+    Component: Calendar,
+    source: CalendarSource,
   },
 ];
