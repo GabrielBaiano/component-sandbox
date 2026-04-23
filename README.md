@@ -3,7 +3,7 @@
 
 <p align="center">
   <br />
-  <b style="font-size: 32px;">Gabri UI</b>
+  <b style="font-size: 32px;">GAMA UI</b>
   <br />
   <br />
   <b>Premium React UI components for state-of-the-art web applications.</b>
@@ -15,7 +15,7 @@
   <a href="https://github.com/GabrielBaiano/component-sandbox/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="license">
   </a>
-  <a href="https://www.npmjs.com/package/@gabri/ui">
+  <a href="https://www.npmjs.com/package/@gama/ui">
     <img src="https://img.shields.io/badge/npm-v1.0.0-orange.svg?style=flat-square" alt="npm version">
   </a>
   <a href="https://github.com/GabrielBaiano/component-sandbox/actions">
@@ -28,7 +28,7 @@
 
 <br />
 
-Gabri UI is a high-quality component library designed to provide beautiful, interactive, and production-ready components. Inspired by the best design practices, it focuses on performance, accessibility, and a premium aesthetic (glassmorphism, advanced animations, and fluid layouts).
+GAMA UI is a high-quality component library designed to provide beautiful, interactive, and production-ready components. Inspired by the best design practices, it focuses on performance, accessibility, and a premium aesthetic (glassmorphism, advanced animations, and fluid layouts).
 
 ## Features
 
@@ -49,7 +49,7 @@ The library comes with a built-in documentation site and interactive playground.
 > **Note:** The library is currently in development. NPM installation will be available soon.
 
 ```bash
-npm install @gabri/ui
+npm install @gama/ui
 ```
 
 ### For Development (Sandbox)
@@ -69,10 +69,10 @@ npm run dev
 
 ## Usage
 
-Integrating Gabri UI components into your project is straightforward:
+Integrating GAMA UI components into your project is straightforward:
 
 ```tsx
-import { ToggleSwitch } from '@gabri/ui';
+import { ToggleSwitch } from '@gama/ui';
 
 function App() {
   return (
@@ -96,7 +96,7 @@ function App() {
 ## Project Structure
 
 ```bash
-gabri-ui/
+gama-ui/
 ├── src/
 │   ├── app/           # Documentation Site source code
 │   ├── components/    # Component Library (The core)

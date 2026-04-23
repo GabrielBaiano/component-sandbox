@@ -116,7 +116,7 @@ export default function Sidebar({
           </div>
           <div>
             <h1 className="text-sm font-bold leading-none text-white transition-colors group-hover:text-accent-400">
-              Gabri UI
+              GAMA UI
             </h1>
             <p className="mt-0.5 font-mono text-[10px] text-white/30">
               Build your library

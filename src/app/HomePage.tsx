@@ -56,7 +56,7 @@ export default function HomePage({
           className="mb-6 text-4xl font-bold tracking-tight text-white md:text-5xl"
         >
           Build faster with{' '}
-          <span className="gradient-brand-text">Gabri UI</span>
+          <span className="gradient-brand-text">GAMA UI</span>
         </motion.h1>
 
         <motion.p
@@ -126,7 +126,7 @@ export default function HomePage({
                 <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-black/40 p-4 font-mono text-sm">
                   <span className="text-accent-400">$</span>{' '}
                   <span className="text-white/80">npm install</span>{' '}
-                  <span className="text-accent-300">@gabri/ui</span>
+                  <span className="text-accent-300">@gama/ui</span>
                   <div className="pointer-events-none absolute inset-0 translate-x-full bg-accent-500/5 transition-transform duration-500 group-hover:translate-x-0" />
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function HomePage({
                     <span className="text-accent-400">import</span> &#123;{' '}
                     <span className="text-white/80">ToggleSwitch</span> &#125;{' '}
                     <span className="text-accent-400">from</span>{' '}
-                    <span className="text-accent-300">'@gabri/ui'</span>
+                    <span className="text-accent-300">'@gama/ui'</span>
                   </p>
                   <p className="mt-2 truncate text-white/30">
                     <span className="text-accent-400">function</span>{' '}

@@ -139,11 +139,11 @@ export default function ComponentPage() {
             <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-accent-500/20 to-accent-600/20 opacity-75 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
             <div className="relative flex items-center justify-between overflow-hidden rounded-2xl border border-white/10 bg-black p-5 font-mono text-sm">
               <span className="text-white/60">
-                <span className="text-accent-400">npm</span> install @gabri/ui
+                <span className="text-accent-400">npm</span> install @gama/ui
               </span>
               <button
                 onClick={() =>
-                  navigator.clipboard.writeText('npm install @gabri/ui')
+                  navigator.clipboard.writeText('npm install @gama/ui')
                 }
                 className="rounded-lg p-2 text-white/20 transition-all hover:bg-white/5 hover:text-white"
                 title="Copy to clipboard"
