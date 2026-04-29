@@ -1,7 +1,10 @@
 export default function Calendar() {
   return (
     <div className="flex flex-col items-center">
-      <h2 className="font-mono text-[10px] uppercase tracking-tighter">test</h2>
+      <button class="rounded bg-blue-500 px-4 py-2 text-white">
+        {' '}
+        simples button
+      </button>
     </div>
   );
 }

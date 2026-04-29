@@ -2,7 +2,7 @@ import type { ComponentMeta } from '../../types';
 
 export const meta: ComponentMeta = {
   id: 'calendar',
-  name: 'Calendar Class',
+  name: 'Calendar',
   description: 'A simple calendar',
   tags: ['calendar', 'minimalistic'],
   tech: ['react', 'tailwind'],
